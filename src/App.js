@@ -7,6 +7,7 @@ import {Layout, Button} from 'antd'
 import ProtectedRoute from './components/ProtectedRoute';
 
 import Home from './components/Home'
+import Neighbor from './components/Neighbor'
 
 const { Content } = Layout
 
@@ -16,10 +17,11 @@ const App = () => {
     <div className="App">
     <Router>
       <Layout>
-        <Button><Link to="/home">Press to go home</Link></Button>
+        <Button><Link to="/home?test=hello">Press to go home</Link></Button>
         <Content>
           <Switch>
-            <ProtectedRoute isAllowed={true} exact path="/home" render={(props) => <Home />} />
+            <ProtectedRoute isAllowed={true} exact path="/home" render={(props) => <Home {...props}/>} />
+            <ProtectedRoute isAllowed={true} exact path="/neighbor" render={(props) => <Neighbor {...props}/>} />
           </Switch>
         </Content>
       </Layout>

@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import { Button} from 'antd'
+import qs from 'qs'
 
-export default class Home extends Component {
-  static propTypes = {
-    prop: PropTypes
-  }
-
-  render() {
+const Home = (props) => {
+  const { search } = props.location
+  const queries = qs.parse(search.substr(1))
+  const test = queries['test'] || null
     return (
       <div>
-        yoooooo
+        <Button onClick={() => props.history.push('/neighbor')}>Press to go neighbor</Button>
+        {test} yoooooo
       </div>
     )
-  }
 }
+
+export default Home
